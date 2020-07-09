@@ -16,6 +16,10 @@ final class RootRouter {
     }
     
     func showFirstView() {
-//        let first
+        let firstView = TodoListRouter.assembleModule()
+        let navigationController = UINavigationController(rootViewController: firstView)
+        
+        window.rootViewController = navigationController
+        window.makeKeyAndVisible()
     }
 }

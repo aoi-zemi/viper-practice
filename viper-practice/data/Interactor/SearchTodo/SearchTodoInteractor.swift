@@ -9,9 +9,15 @@
 import Foundation
 
 protocol SearchTodoUseCase: AnyObject {
-    func fetchTodos(completion: @escaping (Result<[Todo], Error>))
+    func fetchTodos(completion: (Result<[Todo], Error>) -> Void)
 }
 
 final class SearchTodoInteractor {
     
+}
+
+extension SearchTodoInteractor: SearchTodoUseCase {
+    func fetchTodos(completion: (Result<[Todo], Error>) -> Void) {
+        
+    }
 }

@@ -18,7 +18,7 @@ class APIClient {
 }
 
 extension APIClient: TodoRequestable {
-    func send<Request>(request: Request, completion: @escaping (Result<Request.Response, Error>) -> ()) {
+    func send<Request: APIRequest>(request: Request, completion: @escaping (Result<Request.Response, Error>) -> ()) {
 //        let response = try request.response(from: data, urlResponse: response)
 //        completion(.success(response))
     }

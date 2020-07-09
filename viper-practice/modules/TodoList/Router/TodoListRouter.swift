@@ -21,7 +21,12 @@ final class TodoListRouter {
     }
     
     static func assembleModule() -> UIViewController {
-        return UIViewController() // todo
+        let view = UIStoryboard(name: "TodoList", bundle: nil).instantiateInitialViewController() as! TodoListViewController
+        let router = TodoListRouter(viewController: view)
+        let listInteractor = SearchTodoInteractor()
+        let presenter = TodoListViewPresenter(view: view, router: router, listInteractor: listInteractor)
+        view.presenter = presenter
+        return view
     }
 
     
@@ -30,5 +35,6 @@ final class TodoListRouter {
 extension TodoListRouter: TodoListWireframe {
     func showTodoDetail() {
         // TODO
+        
     }
 }

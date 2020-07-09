@@ -16,17 +16,28 @@ final class TodoListViewPresenter {
     
     private weak var view: TodoListView?
     private let router: TodoListRouter
+    private let listInteractor: SearchTodoUseCase
     
     init(view: TodoListView,
-         router: TodoListRouter) {
+         router: TodoListRouter,
+         listInteractor: SearchTodoUseCase) {
         self.view = view
         self.router = router
+        self.listInteractor = listInteractor
     }
     
 }
 
 extension TodoListViewPresenter: TodoListViewPresentation {
     func viewDidLoad() {
-        
+        listInteractor.fetchTodos(completion: { result in
+            switch result {
+            case .success(let todos):
+                print(todos)
+            case .failure:
+                break
+            }
+
+        })
     }
 }
